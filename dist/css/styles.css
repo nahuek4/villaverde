@@ -35,7 +35,7 @@
 .back {
     height: 56.96em;
     background-repeat: no-repeat;
-    background-image: url("../../components/Muestra/muestra.webp");
+    background-image: url("../components/Muestra/muestra.webp");
 }
 
 
@@ -148,12 +148,21 @@
 
 
     .back {
-        background-image: url("../..//components/Muestra/mobile2.webp");
+        background-image: url("../components/Muestra/mobile2.webp");
     }
 
     .back .backtext,
     .back span {
         font-size: var(--font-size-xxxsmall);
+    }
+
+    .lineanav {
+        height: 3em;
+    }
+
+    .menunav {
+        width: 3em;
+        height: 3em;
     }
 
     .logonav {
