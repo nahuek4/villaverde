@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "titulo": "Entrenamiento personal",
+        "foto": "cat1.webp"
+    },
+    {
+        "id": 2,
+        "titulo": "Alto rendimiento",
+        "foto": "cat2.webp"
+    },
+    {
+        "id": 3,
+        "titulo": "Rehabilitacion activa",
+        "foto": "cat3.webp"
+    },
+    {
+        "id": 4,
+        "titulo": "Evaluaciones funcionales",
+        "foto": "cat4.webp"
+    },
+    {
+        "id": 5,
+        "titulo": "Recovery",
+        "foto": "cat5.webp"
+    }
+]
