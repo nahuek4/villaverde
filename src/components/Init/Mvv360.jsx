@@ -1,22 +1,29 @@
+import { Fade, Slide } from "react-awesome-reveal";
+import Galeria from "./Galeria"
 
 const Mvv360 = () => {
     return (
         <div className="mvv360Comp">
-            <div className="mvv360Back">
-                <div className="contenidoMvv360">
-                    <div className="text">
-                        <h2>DONDE QUIERAS. CUANDO QUIERAS.</h2>
-                        <p><span>MVV360®</span> elimina nuestras distancias.</p>
-                        <p>No importa si necesitas rehabilitar</p>
-                        <p>una lesión, mejorar tu condición física</p>
-                        <p>o destacarte en tu deporte; tu plan</p>
-                        <p>siempre con vos.</p>
-                    </div>
-                    <div className="botonMvv360">
-                        <a href=""><button>Conocé más</button></a>
-                    </div>
+            <Slide direction="right" delay={300}>
+                <div className="mvv360Back">
+                    <Fade direction="up" delay={200} cascade>
+                        <div className="contenidoMvv360">
+                            <div className="text">
+                                <h2>CURSOS & WEBINARS</h2>
+                                <p>Conoce mis próximos cursos y sé parte de</p>
+                                <p>una nueva generación de profesionales responsables</p>
+                                <p>que identifica, evalúa y toma decisiones</p>
+                                <p>basadas en la más actualizada evidencia certificada</p>
+                                <p>para el bienestar y rendimiento de tus deportistas.</p>
+                            </div>
+                            <div className="botonMvv360">
+                                <a href=""><button>Conocé más</button></a>
+                            </div>
+                        </div>
+                    </Fade>
                 </div>
-            </div>
+            </Slide>
+            <Galeria />
         </div>
     )
 }

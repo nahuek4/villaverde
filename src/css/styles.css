@@ -11,6 +11,82 @@
 }
 
 
+/* EFECTOS */
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.fadeInUp {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+}
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+
+
 /* RESET GLOBAL */
 * {
     box-sizing: border-box;
@@ -19,58 +95,121 @@
 }
 
 body {
+    position: relative;
+    /* Hace que el contenido lo tape */
     margin: 0;
     overflow-x: hidden;
+    /* Debe ser al menos igual al alto del footer */
+    background-color: white;
+    /* Se mantiene el fondo blanco */
 }
 
-/* NAVBAR */
+
+
+/* Estilos generales del navbar */
+/* ---- NAVBAR ---- */
 .navbar {
     position: relative;
-    height: 4em;
-    display: flex;
-    background-color: black;
-    justify-content: end;
-    align-items: center;
-    /* Esto es solo para agregar algo de espaciado en el navbar */
+    /* Ya no es fijo */
+    z-index: 1;
 }
 
+/* ---- Contenedor del logo + barra + menú hamburguesa ---- */
+.navContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* Todo alineado a la derecha */
+    background-color: black;
+    padding: 1em;
+}
+
+/* ---- Logo ---- */
+.logonav img {
+    width: 35px;
+}
+
+/* ---- Línea vertical ---- */
 .vertical-line {
     width: 2px;
-    height: 45px;
+    height: 40px;
     background-color: white;
-    margin-right: 1em;
+    margin: 0 1em;
 }
 
-.navMenu ul {
+/* ---- Botón de menú hamburguesa ---- */
+.navToggle {
+    color: white;
+    font-size: 2.5em;
+    cursor: pointer;
+}
+
+/* ---- Menú desplegable ---- */
+.navMenu {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 350px;
+    background-color: black;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease-in-out;
+}
+
+/* ---- Menú visible ---- */
+.navMenu.active {
+    max-height: 350px;
+}
+
+/* ---- Lista de enlaces ---- */
+.navLinks {
+    list-style: none;
+    padding: 1em;
     display: flex;
-    display: none;
-}
-
-.navLink {
-    display: flex;
-}
-
-.logonav img {
-    margin-right: 1em;
-    width: 30px;
-    margin-top: .3em;
+    flex-direction: column;
+    align-items: flex-end;
+    /* Alineado a la derecha */
+    font-family: "Gilroy";
 }
 
 .navItem {
-    list-style: none;
+    margin-bottom: 1em;
 }
 
-.navItem a {
+/* ---- Enlaces (links) ---- */
+.navLink {
     text-decoration: none;
     color: white;
-}
-
-.navToggle {
-    color: #ffffff;
-    padding-right: 1.5em;
     font-size: 2em;
+    transition: all 0.3s ease-in-out;
 }
 
+/* ---- Efecto hover ---- */
+.navLink:hover {
+    color: gray;
+    text-decoration: underline;
+}
+
+/* ---- En pantallas grandes, los links serán más grandes ---- */
+@media (min-width: 1024px) {
+    .navLink {
+        font-size: 1.5em;
+    }
+}
+
+/* ---- En pantallas grandes, los links serán aún más grandes ---- */
+@media (min-width: 1024px) {
+    .navLink {
+        font-size: 1.5em;
+        padding: 12px 18px;
+    }
+}
+
+@media (min-width: 360px) {
+    .logonav img {
+        width: 30px;
+    }
+}
 
 /* FOOTER */
 
@@ -79,11 +218,23 @@ body {
     justify-content: center;
     font-family: "Gilroy";
     flex-direction: column;
-    margin-top: 8em;
+    width: 100%;
+    background-color: white;
+    padding: 13em 0px 0px 0em;
+}
+
+/* Cuando se llega al final de la página */
+.footerVisible {
+    bottom: 0;
+    /* Se muestra el footer */
+}
+
+.footerBack * {
+    pointer-events: auto;
+    /* Asegura que los elementos dentro sean clickeables */
 }
 
 .footerPAdd {
-    font-family: "AddingtonCF";
     font-weight: 600;
 }
 
@@ -144,6 +295,35 @@ body {
     margin-top: 3em;
 }
 
+@media (max-width: 800px) {
+    .footerButton button {
+        font-size: 17px;
+    }
+
+    .footercontent {
+        font-size: 35px;
+    }
+
+    .textIcons {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 700px) {
+    .textIcons {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 12em;
+    }
+
+    .textFooter {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+}
+
 /* LOADER */
 /* Estilos para el loader */
 .loader {
@@ -184,7 +364,7 @@ body {
 
 .second-line {
     display: block;
-    font-family: "AddingtonCF";
+    font-family: "Gilroy";
     font-weight: 300;
     margin-top: 10px;
 }
@@ -250,12 +430,12 @@ body {
 
 @media (max-width: 1050px) {
     .Header img {
-        margin-left: 25em;
+        margin-left: 30em;
         width: 350px;
     }
 
     .Header {
-        height: 40em;
+        height: 42em;
     }
 }
 
@@ -267,9 +447,7 @@ body {
 }
 
 @media (max-width: 700px) {
-    .Header {
-        height: 33em;
-    }
+
 
     .Header img {
         margin-top: 1em;
@@ -282,49 +460,83 @@ body {
 @media (max-width: 600px) {
 
     .Header {
-        height: 25em;
+        background-size: 150%;
+        background-position: left;
     }
 }
 
+
+@media (max-width: 460px) {
+    .Header img {
+        margin-left: 8em;
+    }
+}
+
+@media (max-width: 460px) {
+    .Header img {
+        margin-top: 30em;
+        width: 200px;
+    }
+
+    .Header {
+        z-index: 2;
+        background-size: 150%;
+        background-image: url("../assets/images/responsive/mobileHeader.webp");
+    }
+}
+
+
+/* MOVIMIENTO*/
 
 /* MOVIMIENTO */
-
 .movimiento {
-    justify-content: center;
-    padding-left: 12em;
-    padding-bottom: 3.5em;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     height: 57.5em;
     color: #1e1e1e;
-    background-image: url("assets/images/movback.webp");
+    background-image: url("../assets/images/movback.webp");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: right;
+    background-color: #8E8E8E;
+    padding: 0;
+    /* eliminamos el padding que empujaba el fondo */
 }
 
-
-@media (max-width: 1700px) {
-    .movimiento {
-        background-size: contain;
-    }
+.contenidomov {
+    padding-left: 16em;
+    padding-bottom: 2em;
+    z-index: 2;
 }
 
 .textMov {
-    font-size: 48px;
-    font-family: "AddingtonCF";
-    margin-bottom: .8em;
+    font-size: 37px;
+    font-family: "Gilroy";
+    margin-bottom: 0.8em;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .textMov span {
-    font-family: "AddingtonCF";
-    font-style: italic;
+    font-family: "Gilroy";
 }
 
 .textoMov {
-    line-height: 43px;
-    font-size: 28px;
+    line-height: 1.5em;
+    font-size: clamp(16px, 2vw, 19px);
     font-family: "Gilroy";
     margin-bottom: 1em;
+    max-width: 710px;
+}
+
+.textoMov span {
+    font-weight: 600;
+}
+
+.textoMov ul {
+    margin-left: 1em;
+    font-weight: 600;
 }
 
 .botonMov button {
@@ -333,45 +545,252 @@ body {
     border: 2px solid #1A1A1A;
     cursor: pointer;
     border-radius: 25px;
-    width: 7.8em;
-    padding: .5em;
+    width: 8.8em;
+    padding: 0.5em;
     font-family: "Gilroy";
     font-weight: 500;
 }
 
+.botonMov button sup {
+    font-weight: 500;
+}
+
+@media (max-width: 1800px) {
+    .movimiento {
+        background-size: cover;
+        height: 52em;
+    }
+
+    .contenidomov {
+        padding-left: 12em;
+    }
+}
+
+@media (max-width: 1630px) {
+    .textMov {
+        font-size: 35px;
+    }
+
+    .textoMov {
+        font-size: 18px;
+    }
+
+    .contenidomov {
+        padding-left: 10em;
+    }
+}
+
+
+@media (max-width: 1580px) {
+
+    .textoMov {
+        max-width: 530px;
+    }
+
+
+
+}
+
+@media (max-width: 1500px) {
+
+    .contenidomov {
+        padding-left: 8em;
+    }
+
+    .movimiento {
+        height: 49em;
+        padding-top: 1em;
+    }
+}
+
+@media (max-width: 1300px) {
+    .contenidomov {
+        padding-left: 6em;
+    }
+
+    .textMov {
+        font-size: 32px;
+    }
+
+    .textoMov {
+        font-size: 16.5px;
+    }
+
+    .botonMov button {
+        font-size: 17px;
+    }
+
+    .textoMov {
+        max-width: 485px;
+    }
+
+    .bannerMov p {
+        font-size: 30px;
+    }
+
+    .bannerMov {
+        height: 2.3em;
+    }
+}
+
+
+@media (max-width: 1250px) {
+    .movimiento {
+        height: 45em;
+    }
+}
+
+@media (max-width: 1200px) {
+    .textMov {
+        font-size: 29px;
+    }
+
+    .textoMov {
+        font-size: 15px;
+    }
+
+    .movimiento {
+        height: 40em;
+        padding-top: 5em;
+    }
+
+}
+
+@media (max-width: 1200px) {
+    .textMov {
+        font-size: 27px;
+    }
+
+    .textoMov {
+        font-size: 14px;
+        max-width: 390px;
+    }
+}
+
+
+@media (max-width: 1000px) {
+    .contenidomov {
+        padding-left: 4em;
+    }
+
+    .movimiento {
+        background-color: #fdfafa;
+        background-position: 90%;
+        background-size: cover;
+    }
+}
+
+@media (max-width: 900px) {
+    .contenidomov {
+        padding-left: 3em;
+    }
+
+    .movimiento {
+        background-size: cover;
+    }
+}
+
+
+@media (max-width: 800px) {
+    .textMov {
+        font-size: 24px;
+    }
+
+    .textoMov {
+        font-size: 13px;
+    }
+
+}
+
+@media (max-width: 460px) {
+    .movimiento {
+        background-image: url("../assets/images/responsive/mobileMov.png");
+        height: 60em;
+        padding: 0;
+        background-position: bottom;
+    }
+
+    .contenidomov {
+        padding: 0;
+        margin-top: -21em;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+}
+
+
+/* BANNER MOV */
+/* ✅ Banner Ticker Infinito */
 .bannerMov {
-    display: flex;
-    height: 3em;
-    justify-content: center;
-    align-items: center;
-    word-spacing: .1em;
-    font-size: 35px;
+    overflow: hidden;
     background-color: #8E8E8E;
-    letter-spacing: .13em;
+    height: 3em;
+    display: flex;
+    align-items: center;
     color: #ffffff;
-    font-weight: 500;
     font-family: "Gilroy";
+    font-weight: 500;
+    font-size: 35px;
+    letter-spacing: 0.13em;
+    position: relative;
 }
 
-.bannerMov p {
-    animation: moverLetras 8s linear infinite;
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
 }
 
-@keyframes moverLetras {
-    0% {
-        transform: translateX(120%);
-        /* Empieza fuera de la pantalla a la derecha */
-    }
+.track {
+    display: flex;
+    width: max-content;
+    animation: scrollMarquee 20s linear infinite;
+}
 
-
-    100% {
-        transform: translateX(-110%);
-        /* Termina fuera de la pantalla a la izquierda */
-    }
+.track p {
+    white-space: nowrap;
+    margin: 0;
+    display: flex;
+    align-items: center;
 }
 
 .bannerMov span {
-    font-weight: 800;
+    font-weight: 700;
+    margin: 0 0.5em;
+}
+
+@keyframes scrollMarquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 460px) {
+    .bannerMov {
+        height: 1.5em;
+    }
+
+    .bannerMov p {
+        font-size: 20px;
+    }
+
+    .bannerMov span {
+        font-size: 20px;
+    }
+}
+
+/* SERVICES */
+
+.servicesInitComp {
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    width: 100%;
 }
 
 .servicesInit {
@@ -379,15 +798,18 @@ body {
     color: #1e1e1e;
     justify-content: center;
     align-items: center;
-    height: 45em;
+    height: 70em;
     flex-direction: column;
     overflow: hidden;
     margin-bottom: -5em;
-
 }
 
 .servicesBanner {
-    margin-bottom: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
 }
 
 .textServices {
@@ -395,51 +817,124 @@ body {
     font-size: 28px;
     align-items: center;
     flex-direction: column;
-    padding-bottom: 5em;
+    margin-bottom: 2.5em;
     font-family: "Gilroy";
 }
 
 .textServices h2 {
     padding-top: .3em;
-    font-family: "AddingtonCF";
-    font-style: italic;
 }
 
-
-
-/* Estilo opcional para los elementos dentro de cada slide */
-.cat {
-    position: relative;
+.swiper {
     width: 100%;
-    /* Asegura que el contenedor del slide ocupe todo el espacio disponible */
-    height: 100%;
-    /* Ajusta la altura */
+    max-width: 1200px;
+    overflow: hidden;
 }
 
-.fondoCats {
-    position: relative;
+.swiper-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1em;
+    padding-bottom: 4em;
+}
+
+.swiper-slide img {
+    display: block;
     width: 100%;
-    height: 100%;
-}
-
-.descrCats {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.6);
-    /* Fondo oscuro con opacidad */
-    color: white;
-}
-
-/* Si necesitas más ajustes para asegurar la correcta visibilidad */
-.slider-img {
-    object-fit: cover;
-    /* Asegura que las imágenes se ajusten adecuadamente */
-    width: 100%;
-    /* La imagen ocupará todo el ancho del slide */
     height: auto;
+}
+
+.swiper-slide img:hover {
+    filter: grayscale(100%);
+    transition: all .8s;
+}
+
+.swiper-slide img::before {
+    filter: grayscale(0%);
+    transition: all .8s;
+}
+
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after {
+    color: white;
+    font-size: 30px;
+}
+
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after {
+    color: white;
+    font-size: 30px;
+}
+
+.imgCategoria {
+    position: relative;
+    /* Asegura que la sombra sea relativa a la imagen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgCategoria img {
+    display: block;
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 2;
+    /* Mantiene la imagen encima */
+}
+
+.imgShadow {
+    position: absolute;
+    bottom: -15px;
+    /* Baja la sombra */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    /* Ajusta el tamaño a la imagen */
+    height: 30px;
+    /* Tamaño visible de la sombra */
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 80%);
+    border-radius: 50%;
+    z-index: 1;
+    /* Debajo de la imagen */
+    opacity: 1;
+    pointer-events: none;
+    /* No afecta la interacción */
+}
+
+/* Asegura que el texto se mantenga visible */
+.text-overlay {
+    position: absolute;
+    font-family: "Gilroy";
+    bottom: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-align: left;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    width: fit-content;
+    z-index: 3;
+    /* Asegura que el texto esté sobre la imagen y la sombra */
+}
+
+.swiper-slide {
+    width: auto;
+    flex-shrink: 0;
+}
+
+.botonMov {
+    margin-bottom: 6em;
+}
+
+@media (max-width: 1200px) {
+
+    .swiper img {}
+
 }
 
 /* BENEFICIOS */
@@ -451,8 +946,8 @@ body {
     align-items: center;
     font-family: "Gilroy";
     background-color: #F6F6F6;
-    padding-top: 8em;
-    padding-bottom: 8em;
+    padding-top: 10em;
+    padding-bottom: 14em;
 }
 
 .beneTitulos {
@@ -461,6 +956,7 @@ body {
     justify-self: center;
     flex-direction: column;
     align-items: center;
+    font-family: "Gilroy";
 }
 
 .beneTitulos p {
@@ -470,9 +966,8 @@ body {
 .beneTitulos h2 {
     font-size: 42px;
     margin-top: .5em;
-    font-style: italic;
-    font-family: "Addingtoncf";
     color: #1E1E1E;
+    font-weight: 500;
 }
 
 .beneficios {
@@ -521,101 +1016,121 @@ body {
 }
 
 
-/* GALERIA */
-/* Estilos para la galería */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 200px;
+@media (max-width: 1150px) {
+    .beneficiosArriba {
+        margin-right: 4em;
+    }
+
+    .beneficiosAbajo {
+        margin-left: 4em;
+    }
 }
 
-.gallery-item {
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    transform: translateX(-100px);
-    /* Las imágenes comienzan fuera de la pantalla */
-    transition: opacity 1s ease-out, transform 1s ease-out;
-}
 
-/* Cuando la imagen es visible */
-.gallery-item.visible {
-    opacity: 1;
-    transform: translateX(0);
-    /* Las imágenes entran deslizándose desde la izquierda */
-}
-
-/* Asegura que las imágenes sigan el orden de izquierda a derecha */
-.gallery-item {
-    transition-delay: 0.2s;
-}
-
-/* A cada imagen le damos un retraso progresivo con base en su índice */
-.gallery-item.visible {
-    transition-delay: 0s;
-}
-
-.gallery-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Media Queries para hacerlo responsivo */
-
-/* Para pantallas más pequeñas, ajustamos el número de columnas a 3 */
 @media (max-width: 1000px) {
-    .gallery-grid {
-        grid-template-columns: repeat(3, 1fr);
-        grid-auto-rows: 180px;
-
+    .bene h3 {
+        font-size: 20px;
     }
 
-    .gallery-item:nth-child(n+16) {
-        display: none;
-        /* Ocultar imágenes a partir de la quinta */
+    .bene p {
+        font-size: 15px;
+    }
+
+    .beneTitulos h2 {
+        font-size: 37px;
+
     }
 }
 
-/* Para pantallas más pequeñas, ajustamos el número de columnas a 2 */
-@media (max-width: 700px) {
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 160px;
+
+@media (max-width: 780px) {
+    .bene h3 {
+        font-size: 18px;
     }
 
-    .gallery-item:nth-child(n+13) {
-        display: none;
-        /* Ocultar imágenes a partir de la quinta */
+    .bene p {
+        font-size: 12px;
+    }
+
+    .beneTitulos H2 {
+        font-size: 30px;
+    }
+
+}
+
+
+
+@media (max-width: 632px) {
+    .beneficios {
+        flex-direction: column;
+    }
+
+    .beneTitulos H2 {
+        font-size: 23px;
+    }
+
+    .beneTitulos p {
+        font-size: 18px;
+    }
+
+    .beneficiosArriba {
+        margin: 0;
+    }
+
+    .beneficiosAbajo {
+        margin: 0;
+    }
+
+    .beneTitulos H2 span {
+        display: block;
     }
 }
 
-/* Para pantallas muy pequeñas (móviles), ajustamos el número de columnas a 1 y ocultamos imágenes */
-@media (max-width: 500px) {
-    .gallery-grid {
-        grid-template-columns: 1fr;
-        grid-auto-rows: 150px;
+@media (max-width: 464px) {
+    .beneTitulos h2 {
+        font-size: 18px;
     }
 
-    /* Opcional: Ocultar imágenes en dispositivos móviles */
-    .gallery-item:nth-child(n+8) {
-        display: none;
-        /* Ocultar imágenes a partir de la quinta */
+    .beneTitulos P {
+        font-size: 17px;
+
+    }
+
+}
+
+
+@media (max-width: 260px) {
+    .bene h3 {
+        font-size: 15px;
+    }
+
+
+    .beneText {
+        max-width: 150px;
     }
 }
+
 
 /* MVV360 */
 
+
+
+
 .mvv360Back {
-    height: 56em;
+    min-height: 56em;
+    /* Cambiado a min-height para que pueda crecer si hace falta */
     background-image: url("../assets/images/mvv360banner.webp");
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-size: contain;
+    background-size: cover;
+    /* Ahora se adapta bien sin achicarse */
     background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    /* Fondo fijo */
+    text-align: left;
 }
 
 .contenidoMvv360 {
@@ -629,7 +1144,9 @@ body {
     font-weight: 300;
 }
 
-.text span {
+.text h2 span {
+    display: block;
+    /* El span se pone abajo del h2 */
     color: #D1ED2E;
 }
 
@@ -652,5 +1169,122 @@ body {
     margin-top: 2em;
 }
 
+/* === MEDIA QUERIES RESPONSIVE === */
+
+@media (max-width: 1500px) {
+    .text h2 {
+        font-size: 28px;
+    }
+
+    .text p {
+        font-size: 24px;
+    }
+
+    .contenidoMvv360 {
+        margin-right: 40em;
+    }
+
+    .mvv360Back {
+        min-height: 50em;
+        /* Opcional: achicás un poco el contenedor */
+    }
+
+    .botonMvv360 button {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 1300px) {
+    .contenidoMvv360 {
+        margin-right: 32em;
+    }
+
+    .mvv360Back {
+        min-height: 45em;
+    }
+
+    .text h2 {
+        font-size: 24px;
+    }
+
+    .text p {
+        font-size: 20px;
+    }
+
+    .botonMvv360 button {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 1050px) {
+    .mvv360Back {
+        min-height: 40em;
+    }
+
+    .contenidoMvv360 {
+        margin-right: 30em;
+    }
+
+    .text h2 {
+        font-size: 20px;
+    }
+
+    .text p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 930px) {
+    .mvv360Back {
+        min-height: 35em;
+    }
+
+    .contenidoMvv360 {
+        margin-right: 25em;
+    }
+}
+
+@media (max-width: 830px) {
+    .mvv360Back {
+        min-height: 35em;
+        background-position: 80%;
+    }
+
+    .contenidoMvv360 {
+        margin-right: 20em;
+    }
+
+    .text {
+        max-width: 350px;
+    }
+}
+
+
+@media (max-width: 460px) {
+    .mvv360Back {
+        background-image: url("/assets/images/responsive/mvvmobile.webp");
+        background-size: cover;
+        background-position: right;
+        height: 45em;
+    }
+
+    .contenidoMvv360 {
+        margin: 0;
+        margin-top: 20em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .botonMvv360 {
+        display: flex;
+        justify-content: center;
+    }
+
+    .text {
+        max-width: 320px;
+    }
+}
 
 /* RESPONSIVE */

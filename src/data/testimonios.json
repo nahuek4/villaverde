@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "titulo": "Luca | FITNESS",
+        "foto": "test1.webp",
+        "descripcion": "La verdad me sentí muy cómodo trabajando juntos. Tu calidad profesional es excelente, trasmitís seguridad en todo momento y permitís convencernos de que todo está bajo control. Desde mi punto de vista, lo más importante. Fue un placer."
+    },
+    {
+        "id": 2,
+        "titulo": "GUSTAVO y MARTINA | TENIS",
+        "foto": "test2.webp",
+        "descripcion": "Nuestra experiencia con Damián fue la mejor! No se limitó al progreso físico de nuestra hija, sino que fue un gran educador, acompañándonos durante todo su desarrollo personal y deportivo. ¡Muchos éxitos en Tandil!"
+    },
+    {
+        "id": 3,
+        "titulo": "TOMY | FUTBOL",
+        "foto": "test3.webp",
+        "descripcion": "Dami me ayudó a identificar desbalances musculares que podían traer lesiones con el tiempo, y los trabajamos. Fue un gran complemento en mi carrera y lo recomiendo a todos. Dami entiende el cuerpo más que nadie que conozca."
+    },
+    {
+        "id": 4,
+        "titulo": "DAPHNE | CROSSFIT",
+        "foto": "test4.webp",
+        "descripcion": "Un profesional de la ostia! No deja detalles sin controlar. Si querés intensidad, no se negocia, si querés profesionalismo, la vas a encontrar. Es un placer trabajar con vos cada mañana."
+    },
+    {
+        "id": 5,
+        "titulo": "JAVIER | FUTBOL",
+        "foto": "test5.webp",
+        "descripcion": "Damián es sin duda uno de los mejores entrenadores que tuve , muy dedicado y 100% profesional. Buscaba potenciar el entrenamiento del club, y realmente logré grandes avances y buenas sensaciones , tanto en competencia como durante el entrenamiento."
+    }
+]
